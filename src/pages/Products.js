@@ -4,17 +4,16 @@ import {getProducts} from "../redux/products/axtion";
 
 const Products = () => {
     const {products} = useSelector((state => state.product))
-
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getProducts())
-    }, [dispatch])
+    }, [dispatch]);
 
     return (
         <div className="container">
             <div className="row mt-5 g-3">
-                {products && products.map(product => (
+                {(products && products.length > 0) && products.map(product => (
                     <div className="col-md-3" key={product.id}>
                         <div className="card">
                             <img className="card-img-top" src={product.image} alt="..."/>
