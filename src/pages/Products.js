@@ -1,14 +1,22 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getProducts} from "../redux/products/axtion";
+import addToCart from "../redux/cart/action";
 
 const Products = () => {
     const {products} = useSelector((state => state.product))
+    const {cart} = useSelector((state => state.shoppingCart))
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getProducts())
     }, [dispatch]);
+
+    const addToCartHandler = product => {
+        dispatch(addToCart(product))
+    }
+
+    console.log(cart)
 
     return (
         <div className="container">
@@ -24,7 +32,9 @@ const Products = () => {
                                 </p>
                             </div>
                             <div className="card-footer d-flex justify-content-between">
-                                <button className="btn btn-sm btn-outline-success">
+                                <button
+                                    onClick={() => addToCartHandler(product)}
+                                    className="btn btn-sm btn-outline-success">
                                     Add to cart
                                 </button>
                                 <span>{product.price}</span>
