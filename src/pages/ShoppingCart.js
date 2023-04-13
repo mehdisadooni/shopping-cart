@@ -1,11 +1,18 @@
 import {useDispatch, useSelector} from "react-redux";
-import {increment} from "../redux/cart/action";
+import {decrement, increment} from "../redux/cart/action";
 
 const ShoppingCart = () => {
+
     const {cart} = useSelector((state => state.shoppingCart));
+
     const dispatch = useDispatch()
+
     const handleIncrement = productId => {
         dispatch(increment(productId))
+    }
+
+    const handleDecrement = productId => {
+        dispatch(decrement(productId))
     }
 
     return (
@@ -47,7 +54,8 @@ const ShoppingCart = () => {
                                         +
                                     </button>
                                     <span>{product.qty}</span>
-                                    <button className="btn btn-sm btn-dark ms-2">
+                                    <button onClick={() => handleDecrement(product.id)}
+                                            className="btn btn-sm btn-dark ms-2">
                                         -
                                     </button>
                                 </td>
