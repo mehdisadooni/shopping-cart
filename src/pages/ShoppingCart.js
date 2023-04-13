@@ -1,7 +1,13 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {increment} from "../redux/cart/action";
 
 const ShoppingCart = () => {
-    const { cart } = useSelector((state => state.shoppingCart));
+    const {cart} = useSelector((state => state.shoppingCart));
+    const dispatch = useDispatch()
+    const handleIncrement = productId => {
+        dispatch(increment(productId))
+    }
+
     return (
         <div className="container">
             <div className="row mt-5">
@@ -18,7 +24,7 @@ const ShoppingCart = () => {
                         </thead>
                         <tbody>
                         {cart && cart.map(product => (
-                            <tr>
+                            <tr key={product.id}>
                                 <td className="align-middle">
                                     <div className="row">
                                         <div className="col-lg-2">
@@ -36,7 +42,8 @@ const ShoppingCart = () => {
                                 </td>
                                 <td className="align-middle">{product.price}</td>
                                 <td className="align-middle">
-                                    <button className="btn btn-sm btn-dark me-2">
+                                    <button onClick={() => handleIncrement(product.id)}
+                                            className="btn btn-sm btn-dark me-2">
                                         +
                                     </button>
                                     <span>{product.qty}</span>

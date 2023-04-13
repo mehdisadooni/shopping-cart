@@ -1,10 +1,16 @@
-import {ADD_TO_CART} from "./actionType";
+import {ADD_TO_CART, INCREMENT} from "./actionType";
 
-const addToCart = (product) => {
+export const addToCart = (product) => {
     return {
         type: ADD_TO_CART,
         payload: product
     }
 }
 
-export default addToCart
+export const increment = productId => {
+    return {
+        type: INCREMENT,
+        payload: productId
+    }
+}
+

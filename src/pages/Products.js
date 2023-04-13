@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getProducts} from "../redux/products/axtion";
-import addToCart from "../redux/cart/action";
+import {addToCart} from "../redux/cart/action";
 
 const Products = () => {
     const {products} = useSelector((state => state.product))
