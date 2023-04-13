@@ -2,6 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getProducts} from "../redux/products/axtion";
 import {addToCart} from "../redux/cart/action";
+import Swal from "sweetalert2";
 
 const Products = () => {
     const {products} = useSelector((state => state.product))
@@ -14,6 +15,15 @@ const Products = () => {
 
     const addToCartHandler = product => {
         dispatch(addToCart(product))
+        Swal.fire({
+            title: 'Product added',
+            icon: 'success',
+            showConfirmButton: false,
+            timerProgressBar: true,
+            timer: 3000,
+            toast: true,
+            position: "top"
+        })
     }
 
     console.log(cart)
