@@ -1,4 +1,4 @@
-import {SET_PRODUCTS} from "./axtionType";
+import {SET_PRODUCTS} from "./actionType";
 
 
 const products = [

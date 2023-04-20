@@ -1,19 +1,19 @@
-import {SET_PRODUCTS} from "./axtionType";
+import { SET_PRODUCTS } from "./actionType";
 
 const initialState = {
-    products: {}
-}
+  products: {},
+};
 
 const productReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case SET_PRODUCTS:
-            return {
-                ...state,
-                products: action.payload
-            }
-        default:
-            return state
-    }
-}
+  switch (action.type) {
+    case SET_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
-export default productReducer
+export default productReducer;
